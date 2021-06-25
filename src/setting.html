@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="bootstrap-5.0.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Miami</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="bootstrap-5.0.1-dist/js/bootstrap.min.js"></script>
+    <script src="./Javascript/dataStream.js"></script>
+    <script src="./Javascript/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+    <div class="card text-center text-white bg-dark border-white col-12 col-sm-6 col-md-3 m-3 mx-auto" style="max-width: 80;">
+        <div class="card-body text-white bg-dark ">
+            <h5 class="card-title text-center">
+                Setting
+            </h5>
+        </div>
+        <form class="px-4 py-3">
+            <li class="list-group-item text-white" style="background-color: #708090;">
+                <div class="mb-3">
+                    <label for="exampleDropdownFormEmail1" class="form-label" id="tes">Delay Room Relay</label>
+                    <input type="email" class="form-control" id="roomDelay" placeholder="isi angka">
+                </div>
+            </li>
+        </form>
+        <div class="card-body text-white bg-dark mb-1 text-center">
+            <button type="button" id="setting" class="btn btn-outline-light" onClick="reply_click(this.id)">Save Setting</span></button>
+            <button type="button" id="backIndex" class="btn btn-outline-light" onClick="reply_click(this.id)">back</span></button>
+        </div>
+    </div>
+</body>
+</html>
