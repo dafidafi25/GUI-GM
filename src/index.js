@@ -88,10 +88,7 @@ client.setTimeout(1000);
 client.connect(8025,"192.168.1.199", function() {
   console.log('Connected');
 });
-client.on('error', function(ex) {
-  console.log("handled error");
-  console.log(ex);
-});
+client.on('error', netReconnect);
 
 //creating event as client get Data handler for arduino
 client.on('data', getData); 
@@ -107,18 +104,9 @@ app1.use(errorHandler)
 
 function requestData(a,b,c,d,e,f,g,h){
 var buffer = Buffer.from([a,b,c,d,e,f,g,h]);
-if(client.destroyed){
-  console.log('trying to reconnect..');
-  client.connect(8025,"192.168.1.199", function() {
-    console.log('reConnected');
-  });
-  client.on('error', function(ex) {
-    console.log("handled error");
-    console.log(ex);
-  });
-}else{
-  client.write(buffer)
-}
+  if(!client.destroyed){
+    client.write(buffer)
+  }
 
 }
 
@@ -189,7 +177,7 @@ function crc16_update(crc, aa)
     // console.log("lantai ke : " + req.body.Number + " req data ");
     olahData(req.body.Number);
     var buf = Buffer.from(floorData);
-    // console.log(buf);
+    console.log(buf);
     buf = buf.toJSON();
     res.send(buf);
   }
@@ -247,7 +235,15 @@ function refreshServer(){
       console.log(`reconnected to  http://localhost:${port}`);
       });
   }
+}
 
+function netReconnect(ex) {
+  console.log("handled error");
+  console.log(ex);
+  console.log("Trying too reconnect...");
+  client.connect(8025,"192.168.1.199", function() {
+    console.log('reconnected');
+  });
 }
 
 
