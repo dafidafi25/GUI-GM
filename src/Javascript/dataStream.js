@@ -14,14 +14,37 @@ var arrTemp = new Uint8Array(720);
 var floorReq = 2;
 var floorFlag;
 
-
-
-
-
 var intervalId = window.setInterval(function(){
     updateData(floorReq);
     floorReq++;
     if(floorReq == 6){
+        $.ajax({
+          url: "http://localhost:3000/sendData1",
+          type : "post",
+          data: ROOM_FM1,
+          timeout: 500,
+          success : function(data){
+            console.log(data);
+          }
+        });
+        $.ajax({
+          url: "http://localhost:3000/sendData2",
+          type : "post",
+          data: ROOM_FM2,
+          timeout: 500,
+          success : function(data){
+            console.log(data);
+          }
+        });
+        $.ajax({
+          url: "http://localhost:3000/sendData3",
+          type : "post",
+          data: ROOM_kWh,
+          timeout: 500,
+          success : function(data){
+            console.log(data);
+          }
+        });
         floorReq = 2;
     }
   }, 500);
@@ -38,11 +61,13 @@ $.ajax({
     timeout: 500,
     success : getData
 });
+
     
 }
 
 function getData(data){
     unpack(data);
+    
 }
 
 function unpack(jsonData) {
@@ -263,6 +288,7 @@ function checkIn(id){
       
   }
 
+
 function updateDataRoom(floor){
     var updateFloor = floor*100+1-100;
     if(updateFloor == 101){
@@ -283,8 +309,7 @@ function updateDataRoom(floor){
       document.getElementById('key_'+i).className = ROOM_CARD_IN[i] == 0 ? "dotRed" : "dotGreen";
       document.getElementById('kulkas_'+i).className = ROOM_BELL_K[i] == 0 ? "dotRed" : "dotGreen";
       document.getElementById('emer_'+i).className = ROOM_F_ALARM[i] == 0 ? "dotRed" : "dotGreen";
-      
+
+
     }
   }
-
-  
