@@ -168,7 +168,13 @@ function checkIn(id){
       var FM2D1 = 0x0000;
       FM2D1 |= arrTemp[roomN+18]<<8;
       FM2D1 |= arrTemp[roomN+19];
-  
+      
+      var uC_NoRespond = 0;
+      if((arrTemp[roomN+20] & 0x08) === 0x08)
+      {
+          uC_NoRespond = 1;
+      }
+
       var CardInD1 = 0;
       if((arrTemp[roomN+20] & 0x80) === 0x80)
       {
@@ -305,10 +311,10 @@ function updateDataRoom(floor){
       document.getElementById('freq_'+i).innerHTML = ROOM_F[i].toFixed(2);
       document.getElementById('fm2_'+i).innerHTML = ROOM_FM2[i].toFixed(2);
       document.getElementById('pwr_'+i).innerHTML = ROOM_kWh[i].toFixed(2);
-      document.getElementById('ac_'+i).className = ROOM_INIT_ON[i] == 0 ? "dotRed ": "dotGreen";
-      document.getElementById('key_'+i).className = ROOM_CARD_IN[i] == 0 ? "dotRed" : "dotGreen";
-      document.getElementById('kulkas_'+i).className = ROOM_BELL_K[i] == 0 ? "dotRed" : "dotGreen";
-      document.getElementById('emer_'+i).className = ROOM_F_ALARM[i] == 0 ? "dotRed" : "dotGreen";
+      document.getElementById('ac_'+i).className = ROOM_INIT_ON[i] == 3 ? "dotYellow ": "dotGray";
+      document.getElementById('key_'+i).className = ROOM_CARD_IN[i] == 1 ? "dotGreen" : "dotGray";
+      document.getElementById('kulkas_'+i).className = ROOM_BELL_K[i] == 4 ? "dotBlue" : "dotGray";
+      document.getElementById('emer_'+i).className = ROOM_F_ALARM[i] == 2 ? "dotRed" : "dotGray";
 
 
     }

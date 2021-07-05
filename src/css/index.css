@@ -110,3 +110,34 @@ hr.newBorder{
   border-radius: 50%;
   /* display: inline-block; */
 }
+
+.dotYellow{
+  height: 25px;
+  width: 25px;
+  background-color: #FFFF00;
+  border-radius: 50%;
+  /* display: inline-block; */
+}
+
+.dotBlue{
+  height: 25px;
+  width: 25px;
+  background-color: #006994;
+  border-radius: 50%;
+  /* display: inline-block; */
+}
+
+.dotGray{
+  height: 25px;
+  width: 25px;
+  background-color: #AAAAAA;
+  border-radius: 50%;
+  /* display: inline-block; */
+}
+.dotBlack{
+  height: 25px;
+  width: 25px;
+  background-color: #000000;
+  border-radius: 50%;
+  /* display: inline-block; */
+}

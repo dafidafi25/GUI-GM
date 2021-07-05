@@ -57,19 +57,33 @@ function cardComponent(kamar,btn,volt,curr,phi,flow1,freq,flow2,pwr,ac,key,kulka
         <li class="list-group-item text-white" style="background-color: #708090;">
         <div class="row align-items-start">
           <div class="col">
-              <div id="${ac}" class="dotRed"></div>
+              <div id="${ac}" class="dotBlack"></div>
+          </div>
+          <div class="col">
+              <div> Init </div>
           </div>
             <div class="col">
-              <div id="${key}" class="dotRed"></div>
+              <div id="${key}" class="dotBlack"></div>
+            </div>
+            <div class="col">
+              <div> Key </div>
             </div>
         </div>
       </li>
       <li class="list-group-item text-white" style="background-color: #708090;">
         <div class="row align-items-start">
           <div class="col">
-            <div id="${kulkas}" class="dotRed"></div></div>
+              <div id="${kulkas}" class="dotBlack"></div>
+          </div>
           <div class="col">
-            <div id="${emer}" class="dotRed"></div></div>
+              <div>C.IN</div>
+          </div>
+            <div class="col">
+              <div id="${emer}" class="dotBlack"></div>
+            </div>
+            <div class="col">
+              <div>Fire.A</div>
+            </div>
         </div>
       </li>
         <div class="card-body text-white bg-dark mb-1 text-center">

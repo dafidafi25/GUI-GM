@@ -4,10 +4,6 @@ for (let i = 401; i <= 427; i++) {
   cardComponent(i,`b_${i}`,`v_${i}`,`i_${i}`,`cos_${i}`,`fm1_${i}`,`freq_${i}`,`fm2_${i}`,`pwr_${i}`,`ac_${i}`,`key_${i}`,`kulkas_${i}`,`emer_${i}`);
 }
 
-
-
-
-
 function cardComponent(kamar,btn,volt,curr,phi,flow1,freq,flow2,pwr,ac,key,kulkas,emer){
   document.write(`
     <div class="card text-white bg-dark border-white col-12 col-sm-6 col-md-3 mx-auto mt-3" style="max-width: 18rem;">
@@ -60,20 +56,34 @@ function cardComponent(kamar,btn,volt,curr,phi,flow1,freq,flow2,pwr,ac,key,kulka
       </li>
       <li class="list-group-item text-white" style="background-color: #708090;">
         <div class="row align-items-start">
-          <div class="col ">
-              <div id="${ac}" class="dotRed"></div>
+          <div class="col">
+              <div id="${ac}" class="dotBlack"></div>
+          </div>
+          <div class="col">
+              <div> Init </div>
           </div>
             <div class="col">
-              <div id="${key}" class="dotRed"></div>
+              <div id="${key}" class="dotBlack"></div>
+            </div>
+            <div class="col">
+              <div> Key </div>
             </div>
         </div>
       </li>
       <li class="list-group-item text-white" style="background-color: #708090;">
         <div class="row align-items-start">
           <div class="col">
-            <div id="${kulkas}" class="dotRed"></div></div>
+              <div id="${kulkas}" class="dotBlack"></div>
+          </div>
           <div class="col">
-            <div id="${emer}" class="dotRed"></div></div>
+              <div>C.IN</div>
+          </div>
+            <div class="col">
+              <div id="${emer}" class="dotBlack"></div>
+            </div>
+            <div class="col">
+              <div>Fire.A</div>
+            </div>
         </div>
       </li>
       <div class="card-body text-white bg-dark mb-1 text-center">
