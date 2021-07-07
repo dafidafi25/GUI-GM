@@ -453,6 +453,7 @@ function dataAy(data){
 // process get data
 function requestData(a,b,c,d,e,f,g,h){
   var buffer = Buffer.from([a,b,c,d,e,f,g,h]);
+  console.log(buffer);
   if(!client.destroyed){
     client.write(buffer);
   }
@@ -492,6 +493,7 @@ function olahData(floor){
           
   buff_S[6] = checkCRC_L;
   buff_S[7] = checkCRC_H; 
+
   
   for(i = 0; i<=7; i++)
     {
@@ -552,18 +554,22 @@ function crc16_update(crc, aa)
 
 function relayOn(floorNumber){
   var floor = parseInt(floorNumber);
+  var room = floor % 100;
+  floor = Math.round(floor/100) + 1;
   var C_wM_cRelay = 0x31 + floor;
-  var timerON_H = delayOFF_TIM1 & 0xFF;
-  var timerON_L = delayOFF_TIM1 >> 8;
-  serverFloorProcess(floorNumber,C_wM_cRelay,0x00,0x73,timerON_H,timerON_L);
-  console.log(floorNumber + " " + C_wM_cRelay.toString(16) + " 0x00 " + " 0x73 " + timerON_H + " " + timerON_L);
+  var timerON_L = delayOFF_TIM1 & 0xFF;
+  var timerON_H = delayOFF_TIM1 >> 8;
+  serverFloorProcess(room,C_wM_cRelay,0x00,0x03,timerON_H,timerON_L);
+  console.log(room + " " + C_wM_cRelay.toString(16) + " 0x00 " + " 0x03 " + timerON_H + " " + timerON_L);
 }
 
 function relayOff(floorNumber){
   var floor = parseInt(floorNumber);
+  var room = floor % 100;
+  floor = Math.round(floor/100) + 1;
   var C_wM_cRelay = 0x31 + floor;
-  serverFloorProcess(floorNumber,C_wM_cRelay,0x00,0x70,0x00,0x00);
-  console.log(floorNumber + " " + C_wM_cRelay.toString(16) + " 0x00 " + " 0x70 " + "0x00" + " " + "0x00" );
+  serverFloorProcess(room,C_wM_cRelay,0x00,0x00,0x00,0x00);
+  console.log(room + " " + C_wM_cRelay.toString(16) + " 0x00 " + " 0x00 " + "0x00" + " " + "0x00" );
 }
 
 function serverFloorProcess(a,b,c,d,e,f){
